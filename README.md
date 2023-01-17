@@ -53,7 +53,7 @@
 
 ## Credits 
 
-* [![TT Bots](https://img.shields.io/static/v1?label=KDBotz&message=Telegram&color=critical)](https://t.me/TeamHMT_Bots)
+* [![TT Bots](https://img.shields.io/static/v1?label=TTBots&message=Telegram&color=critical)](https://t.me/TeamHMT_Bots)
 * [![Contact](https://img.shields.io/static/v1?label=Contact&message=On+Telegram&color=critical)](https://t.me/Kgashok04)
 
 ## Deploy 
