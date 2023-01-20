@@ -1082,6 +1082,7 @@ async def auto_filter(client, msg, spoll=False):
         await msg.message.delete()
 
 async def advantage_spell_chok(msg):
+    message = msg
     query = re.sub(
         r"\b(pl(i|e)*?(s|z+|ease|se|ese|(e+)s(e)?)|((send|snd|giv(e)?|gib)(\sme)?)|movie(s)?|new|latest|br((o|u)h?)*|^h(e|a)?(l)*(o)*|mal(ayalam)?|t(h)?amil|file|that|find|und(o)*|kit(t(i|y)?)?o(w)?|thar(u)?(o)*w?|kittum(o)*|aya(k)*(um(o)*)?|full\smovie|any(one)|with\ssubtitle(s)?)",
         "", msg.text, flags=re.IGNORECASE)  # plis contribute some common words
@@ -1131,20 +1132,23 @@ async def advantage_spell_chok(msg):
         )
     ] for k, movie in enumerate(movielist)]
     btn.append([InlineKeyboardButton(text="Close", callback_data=f'spolling#{user}#close_spellcheck')])
-    await msg.reply("I couldn't find anything related to that\nDid you mean any one of these?",	
-                    reply_markup=InlineKeyboardMarkup(btn))
-
-    #try:
-        #if settings['auto_delete']:
-         #   await asyncio.sleep(SPL_DELETE_TIME)
-          #  await spell_check_del.delete()
-    #except KeyError:
-     #       grpid = await active_connection(str(message.from_user.id))
-      #      await save_group_settings(grpid, 'auto_delete', True)
-       #     settings = await get_settings(message.chat.id)
-        #    if settings['auto_delete']:
-         #       await asyncio.sleep(SPL_DELETE_TIME)
-          #      await spell_check_del.delete()
+    spell_check_del = await msg.reply_photo(
+        photo=(SPELL_IMG),
+        caption="𝑯𝑬𝑳𝑳𝑶 {} 𝑰 𝑪𝑶𝑼𝑳𝑫𝑵'𝑻 𝑭𝑰𝑵𝑫 𝑨𝑵𝒀𝑻𝑯𝑰𝑵𝑮 𝑹𝑬𝑳𝑨𝑻𝑬𝑫 𝑻𝑶 𝑻𝑯𝑨𝑻 𝑫𝑰𝑫 𝒀𝑶𝑼 𝑴𝑬𝑨𝑵 𝑨𝑵𝒀 𝑶𝑵𝑬 𝑶𝑭 𝑻𝑯𝑬𝑺𝑬?",
+        reply_markup=InlineKeyboardMarkup(btn)
+        )
+    settings = await get_settings(message.chat.id)
+    try:
+        if settings['auto_delete']:
+           await asyncio.sleep(SPL_DELETE_TIME)
+           await spell_check_del.delete()
+    except KeyError:
+            grpid = await active_connection(str(message.from_user.id))
+            await save_group_settings(grpid, 'auto_delete', True)
+            settings = await get_settings(message.chat.id)
+            if settings['auto_delete']:
+                await asyncio.sleep(SPL_DELETE_TIME)
+                await spell_check_del.delete()
                 
                 
 async def manual_filters(client, message, text=False):
