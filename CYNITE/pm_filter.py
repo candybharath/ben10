@@ -913,6 +913,7 @@ async def auto_filter(client, msg, spoll=False):
         message = msg.message.reply_to_message  # msg will be callback query
         search, files, offset, total_results = spoll
     pre = 'filep' if settings['file_secure'] else 'file'
+    m=await message.reply_text(f"<b><i> 𝖲𝖾𝖺𝗋𝖼𝗁𝗂𝗇𝗀 𝖿𝗈𝗋 '{message.text}' 🔎</i></b>") 
     if settings["button"]:
         btn = [
             [
@@ -1009,17 +1010,20 @@ async def auto_filter(client, msg, spoll=False):
         try:
             if settings['auto_delete']:
                 hehe = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024] + "\n\n<b>‣ Tʜɪs Mᴇssᴀɢᴇ Wɪʟʟ ʙᴇ Aᴜᴛᴏ-Dᴇʟᴇᴛᴇᴅ Aғᴛᴇʀ 5 Mɪɴᴜᴛᴇs.</b>", reply_markup=InlineKeyboardMarkup(btn))
+                await m.delete()
                 await asyncio.sleep(DELETE_TIME)
                 await hehe.delete()
                 await message.delete()
             else:
                 await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
+                await m.delete()
         except KeyError:
             grpid = await active_connection(str(message.from_user.id))
             await save_group_settings(grpid, 'auto_delete', True)
             settings = await get_settings(message.chat.id)
             if settings['auto_delete']:
                 hehe = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024] + "\n\n<b>‣ Tʜɪs Mᴇssᴀɢᴇ Wɪʟʟ ʙᴇ Aᴜᴛᴏ-Dᴇʟᴇᴛᴇᴅ Aғᴛᴇʀ 5 Mɪɴᴜᴛᴇs.</b>", reply_markup=InlineKeyboardMarkup(btn))
+                await m.delete()
                 await asyncio.sleep(DELETE_TIME)
                 await hehe.delete()
                 await message.delete()
@@ -1031,25 +1035,30 @@ async def auto_filter(client, msg, spoll=False):
             try:
                 if settings['auto_delete']:
                     hmm = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024] + "\n\n<b>‣ Tʜɪs Mᴇssᴀɢᴇ Wɪʟʟ ʙᴇ Aᴜᴛᴏ-Dᴇʟᴇᴛᴇᴅ Aғᴛᴇʀ 5 Mɪɴᴜᴛᴇs.</b>", reply_markup=InlineKeyboardMarkup(btn))
+                    await m.delete()
                     await asyncio.sleep(DELETE_TIME)
                     await hmm.delete()
                     await message.delete()
                 else:
                     await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
+                    await m.delete()
             except KeyError:
                 grpid = await active_connection(str(message.from_user.id))
                 await save_group_settings(grpid, 'auto_delete', True)
                 settings = await get_settings(message.chat.id)
                 if settings['auto_delete']:
                     hmm = await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024] + "\n\n<b>‣ Tʜɪs Mᴇssᴀɢᴇ Wɪʟʟ ʙᴇ Aᴜᴛᴏ-Dᴇʟᴇᴛᴇᴅ Aғᴛᴇʀ 5 Mɪɴᴜᴛᴇs.</b>", reply_markup=InlineKeyboardMarkup(btn))
+                    await m.delete()
                     await asyncio.sleep(DELETE_TIME)
                     await hmm.delete()
                     await message.delete()
                 else:
                     await message.reply_photo(photo=imdb.get('poster'), caption=cap[:1024], reply_markup=InlineKeyboardMarkup(btn))
+                    await m.delete()
         except Exception as e:
             logger.exception(e)
             fek = await message.reply_photo(photo=NOR_IMG, caption=cap, reply_markup=InlineKeyboardMarkup(btn))
+            await m.delete()
             try:
                 if settings['auto_delete']:
                     await asyncio.sleep(DELETE_TIME)
@@ -1065,6 +1074,7 @@ async def auto_filter(client, msg, spoll=False):
                     await message.delete()
     else:
         fuk = await message.reply_photo(photo=NOR_IMG, caption=cap, reply_markup=InlineKeyboardMarkup(btn))
+        await m.delete()
         try:
             if settings['auto_delete']:
                 await asyncio.sleep(DELETE_TIME)
