@@ -16,9 +16,9 @@ def is_enabled(value, default):
 # Bot information
 PORT = environ.get("PORT", "8080")
 SESSION = environ.get('SESSION', 'Media_search')
-API_ID = int(environ.get('API_ID', ''))
-API_HASH = environ.get('API_HASH', '')
-BOT_TOKEN = environ.get('BOT_TOKEN', "")
+API_ID = int(environ.get('API_ID', '22604597'))
+API_HASH = environ.get('API_HASH', '0f83b69e33b1a1c5a08b1c9d1c8af75b')
+BOT_TOKEN = environ.get('BOT_TOKEN', "5791730878:AAELxw9OEL2WCgQlMrv7IoSqWoyUxjma38s")
 
 # Bot settings
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
@@ -31,8 +31,8 @@ NEWGRP = environ.get("NEWGRP", "https://te.legra.ph/file/8c84783d0e2077ed628a3.j
 SPELL_IMG = environ.get('SPELL_IMG',"https://te.legra.ph/file/15c1ad448dfe472a5cbb8.jpg")
 
 # Admins, Channels & Users
-ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '').split()]
-CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '').split()]
+ADMINS = [int(admin) if id_pattern.search(admin) else admin for admin in environ.get('ADMINS', '1903876947').split()]
+CHANNELS = [int(ch) if id_pattern.search(ch) else ch for ch in environ.get('CHANNELS', '-1001732546877 -1001821933278').split()]
 auth_users = [int(user) if id_pattern.search(user) else user for user in environ.get('AUTH_USERS', '').split()]
 AUTH_USERS = (auth_users + ADMINS) if auth_users else []
 auth_channel = environ.get('AUTH_CHANNEL')
@@ -41,9 +41,9 @@ AUTH_CHANNEL = int(auth_channel) if auth_channel and id_pattern.search(auth_chan
 AUTH_GROUPS = [int(ch) for ch in auth_grp.split()] if auth_grp else None
 
 # MongoDB information
-DATABASE_URI = environ.get('DATABASE_URI', "")
-DATABASE_NAME = environ.get('DATABASE_NAME', "")
-COLLECTION_NAME = environ.get('COLLECTION_NAME', '')
+DATABASE_URI = environ.get('DATABASE_URI', "mongodb+srv://TeamHMT:TeamHMTTG@cluster6.2lfgdc5.mongodb.net/?retryWrites=true&w=majority")
+DATABASE_NAME = environ.get('DATABASE_NAME', "TTproBot")
+COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Channel Button Links
 GRP_LNK = environ.get('GRP_LNK', 'https://t.me/+C6576uw1AE8yMzRl')
@@ -52,15 +52,15 @@ SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'https://t.me/+C6576uw1AE8yMzRl')
 MSG_ALRT = environ.get('MSG_ALRT', 'Share and Support Us 💖')
 
 # Custom Chats
-DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '0').split()]
+DELETE_CHANNELS = [int(dch) if id_pattern.search(dch) else dch for dch in environ.get('DELETE_CHANNELS', '-1001869007828').split()]
 SUPPORT_GROUP = int(environ.get('SUPPORT_GROUP', -1001537005802))
 FILE_CHANNEL = int(environ.get('FILE_CHANNEL', -1001848626541))
 FILE_CHANNEL_LINK = environ.get('FILE_CHANNEL_LINK', 'https://t.me/+qceSo9SsrlJhMTQ1')
 HOW_DWLD_LINK = environ.get('HOW_DWLD_LINK', 'https://t.me/Team_HMT/8')
 
 # Log Channels
-LOG_CHANNEL = int(environ.get('LOG_CHANNEL', ))
-RQST_LOG_CHANNEL = int(environ.get('RQST_LOG_CHANNEL', ))
+LOG_CHANNEL = int(environ.get('LOG_CHANNEL', '-1001801953190'))
+RQST_LOG_CHANNEL = int(environ.get('RQST_LOG_CHANNEL', '-1001801953190'))
 
 # Bot Options
 ENABLE_SHORTENER = is_enabled((environ.get('ENABLE_SHORTENER', "True")), True)
@@ -91,8 +91,8 @@ SPL_DELETE_TIME = int(environ.get('SPL_DELETE_TIME', 60))
 
 # URL SHORTNER
 
-URL_SHORTENR_WEBSITE = environ.get('URL_SHORTENR_WEBSITE', '')
-URL_SHORTNER_WEBSITE_API = environ.get('URL_SHORTNER_WEBSITE_API', '')
+URL_SHORTENR_WEBSITE = environ.get('URL_SHORTENR_WEBSITE', 'tinyfy.in')
+URL_SHORTNER_WEBSITE_API = environ.get('URL_SHORTNER_WEBSITE_API', 'f04e7d16dd4debd53e2932bebbde3c7a6876fe87')
 
 LOG_STR = "Current Cusomized Configurations are:-\n"
 LOG_STR += ("IMDB Results are enabled, Bot will be showing imdb details for you queries.\n" if IMDB else "IMBD Results are disabled.\n")
